@@ -1,16 +1,61 @@
 import styled from "styled-components";
 // import { Link } from "react-router-dom";
 
-// import { FaPlaystation } from "react-icons/fa"; //<FaPlaystation />
-// import { FaXbox } from "react-icons/fa"; //<FaXbox />
-// import { FaWindows } from "react-icons/fa"; //<FaWindows />
-// import { BsNintendoSwitch } from "react-icons/bs"; //<BsNintendoSwitch />
-// import { FaLinux } from "react-icons/fa"; //<FaLinux />
-// import { FaApple } from "react-icons/fa"; //<FaApple />
+import { FaPlaystation } from "react-icons/fa";
+import { FaXbox } from "react-icons/fa";
+import { FaWindows } from "react-icons/fa";
+import { BsNintendoSwitch } from "react-icons/bs";
+import { FaLinux } from "react-icons/fa";
+import { FaApple } from "react-icons/fa";
+import { IoLogoAndroid } from "react-icons/io";
 
 const Game = ({ game }) => {
-  // const getPlatforms = (game.platforms) => {
+  const getPlatforms = () => {
+    const platformsToCheck = [
+      "PC",
+      "PlayStation",
+      "Xbox",
+      "Linux",
+      "macOS",
+      "Nintendo",
+      "Android",
+    ];
 
+    const matchingPlatforms = [];
+
+    for (let i = 0; i < game.platforms.length; i++) {
+      for (let j = 0; j < platformsToCheck.length; j++) {
+        const platformName = game.platforms[i].platform.name;
+        if (new RegExp(platformsToCheck[j], "i").test(platformName)) {
+          if (matchingPlatforms.includes(platformsToCheck[j])) {
+            continue;
+          }
+          matchingPlatforms.push(platformsToCheck[j]);
+        }
+      }
+    }
+
+    return matchingPlatforms.sort(
+      (a, b) => platformsToCheck.indexOf(a) - platformsToCheck.indexOf(b)
+    );
+  };
+
+  const assignPlatformIcons = (platforms) => {
+    const icons = platforms.map((platform) => {
+      if (platform === "PC") return <FaWindows key={platform} />;
+      if (platform === "PlayStation") return <FaPlaystation key={platform} />;
+      if (platform === "Xbox") return <FaXbox key={platform} />;
+      if (platform === "Linux") return <FaLinux key={platform} />;
+      if (platform === "macOS") return <FaApple key={platform} />;
+      if (platform === "Nintendo") return <BsNintendoSwitch key={platform} />;
+      if (platform === "Android") return <IoLogoAndroid key={platform} />;
+    });
+
+    return icons;
+  };
+
+  // const sortPlatforms = (order) => {
+  //   return order.sort((a,b) => order.indexOf(a) - order.indexOf(b))
   // }
 
   return (
@@ -21,7 +66,7 @@ const Game = ({ game }) => {
           <button>Add to cart +</button>
           $20.00
         </ButtonContainer>
-        <div>Platforms</div>
+        <Icons>{assignPlatformIcons(getPlatforms())}</Icons>
         <h2>{game.name}</h2>
       </InfoContainer>
     </GameContainer>
@@ -44,10 +89,6 @@ const InfoContainer = styled.div`
   padding: 2rem;
   height: 17rem;
   border-radius: 0 0 3rem 3rem;
-
-  & div {
-    font-size: 2rem;
-  }
 `;
 
 const ButtonContainer = styled.div`
@@ -60,6 +101,13 @@ const ButtonContainer = styled.div`
   }
 `;
 
+const Icons = styled.div`
+  font-size: 2rem;
+
+  & svg {
+    margin-right: 0.5rem;
+  }
+`;
 // const GameLink = styled(Link)`
 //   //
 // `;
