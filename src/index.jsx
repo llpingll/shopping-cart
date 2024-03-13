@@ -8,9 +8,8 @@ import Router from "./components/utilities/Router.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ThemeProvider theme={Theme}>
-      <GlobalStyle>
-        <Router />
-      </GlobalStyle>
+      <GlobalStyle />
+      <Router />
     </ThemeProvider>
   </React.StrictMode>
 );

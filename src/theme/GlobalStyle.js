@@ -58,7 +58,7 @@ const GlobalStyle = createGlobalStyle`
     cursor: pointer;
   }
 
-  /* @media (max-width: 1600px) {
+  @media (max-width: 1600px) {
     html {
       font-size: 55%;
     }
@@ -68,7 +68,7 @@ const GlobalStyle = createGlobalStyle`
     html {
       font-size: 45%;
     }
-  } */
+  }
 `;
 
 export default GlobalStyle;

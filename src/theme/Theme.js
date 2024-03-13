@@ -7,7 +7,7 @@ const Theme = {
     dark: "#181818",
     green: "#b5ffb5",
     red: "#ffb5b5",
-    transparent: "rgba(255, 255, 255, 0)",
+    purple: "#8B60F7",
   },
 };
 
