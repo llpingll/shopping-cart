@@ -40,23 +40,30 @@ const Game = ({ game }) => {
     );
   };
 
-  const assignPlatformIcons = (platforms) => {
-    const icons = platforms.map((platform) => {
-      if (platform === "PC") return <FaWindows key={platform} />;
-      if (platform === "PlayStation") return <FaPlaystation key={platform} />;
-      if (platform === "Xbox") return <FaXbox key={platform} />;
-      if (platform === "Linux") return <FaLinux key={platform} />;
-      if (platform === "macOS") return <FaApple key={platform} />;
-      if (platform === "Nintendo") return <BsNintendoSwitch key={platform} />;
-      if (platform === "Android") return <IoLogoAndroid key={platform} />;
-    });
-
-    return icons;
+  const assignIcons = (platform) => {
+    switch (platform) {
+      case "PC":
+        return <FaWindows key={platform} />;
+      case "PlayStation":
+        return <FaPlaystation key={platform} />;
+      case "Xbox":
+        return <FaXbox key={platform} />;
+      case "Linux":
+        return <FaLinux key={platform} />;
+      case "macOS":
+        return <FaApple key={platform} />;
+      case "Nintendo":
+        return <BsNintendoSwitch key={platform} />;
+      case "Android":
+        return <IoLogoAndroid key={platform} />;
+      default:
+        return null;
+    }
   };
 
-  // const sortPlatforms = (order) => {
-  //   return order.sort((a,b) => order.indexOf(a) - order.indexOf(b))
-  // }
+  const generatePrice = () => {
+    return `$${(Math.random() * (61 - 5) + 5).toFixed(2)}`;
+  };
 
   return (
     <GameContainer>
@@ -64,16 +71,22 @@ const Game = ({ game }) => {
       <InfoContainer>
         <ButtonContainer>
           <button>Add to cart +</button>
-          $20.00
+          {generatePrice()}
         </ButtonContainer>
-        <Icons>{assignPlatformIcons(getPlatforms())}</Icons>
+        <Icons>{getPlatforms().map((platform) => assignIcons(platform))}</Icons>
         <h2>{game.name}</h2>
       </InfoContainer>
     </GameContainer>
   );
 };
 
-const GameContainer = styled.div``;
+const GameContainer = styled.div`
+  transition: transform 0.15s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+`;
 
 const Image = styled.img`
   object-fit: cover;
@@ -94,10 +107,11 @@ const InfoContainer = styled.div`
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  font-size: 2rem;
 
   & button {
     background-color: inherit;
-    font-size: 2rem;
+    /* font-size: 2rem; */
   }
 `;
 
