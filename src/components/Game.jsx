@@ -1,5 +1,5 @@
 import styled from "styled-components";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { FaPlaystation } from "react-icons/fa";
 import { FaXbox } from "react-icons/fa";
@@ -74,7 +74,9 @@ const Game = ({ game }) => {
           {generatePrice()}
         </ButtonContainer>
         <Icons>{getPlatforms().map((platform) => assignIcons(platform))}</Icons>
-        <h2>{game.name}</h2>
+        <GameLink to={`/store/${game.id}`}>
+          <h2>{game.name}</h2>
+        </GameLink>
       </InfoContainer>
     </GameContainer>
   );
@@ -111,7 +113,6 @@ const ButtonContainer = styled.div`
 
   & button {
     background-color: inherit;
-    /* font-size: 2rem; */
   }
 `;
 
@@ -122,7 +123,7 @@ const Icons = styled.div`
     margin-right: 0.5rem;
   }
 `;
-// const GameLink = styled(Link)`
-//   //
-// `;
+const GameLink = styled(Link)`
+  color: ${({ theme }) => theme.colors.text};
+`;
 export default Game;
