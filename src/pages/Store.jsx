@@ -4,18 +4,18 @@ import Games from "../components/Games";
 import Footer from "../components/Footer";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import { useGameProvider } from "../components/context/GameContext";
+import { useContext } from "react";
+import { GameContext } from "../components/context/GameContext";
 
 const APIKEY = "a08052b0ccda4e9f949c07103f97ca68";
 const URL = "https://api.rawg.io/api/games";
 
 const Store = () => {
   const [error, setError] = useState(null);
-  const { games, setGames } = useGameProvider();
+  const { games, setGames } = useContext(GameContext);
 
   useEffect(() => {
     getGames();
-    // console.log(games);
   }, []);
 
   const getGames = async () => {

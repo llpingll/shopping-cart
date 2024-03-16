@@ -1,6 +1,6 @@
-import { useState, createContext, useContext } from "react";
+import { useState, createContext } from "react";
 
-const GameContext = createContext();
+export const GameContext = createContext();
 
 export const Gameprovider = ({ children }) => {
   const [games, setGames] = useState([]);
@@ -12,5 +12,3 @@ export const Gameprovider = ({ children }) => {
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
 };
-
-export const useGameProvider = () => useContext(GameContext);
