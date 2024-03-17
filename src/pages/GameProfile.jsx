@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import { IoMdArrowBack } from "react-icons/io";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import ImageSlider from "../components/gameprofile/ImageSlider";
 
 const GameProfile = () => {
   const { games } = useContext(GameContext);
@@ -13,6 +14,7 @@ const GameProfile = () => {
   const params = useParams();
 
   const game = games.find((game) => game.id == params.gameId);
+  console.log(game);
 
   return (
     <ProfileContainer>
@@ -22,10 +24,10 @@ const GameProfile = () => {
           <IoMdArrowBack />
           Store
         </StoreLink>
-        <span>{game.name}</span>
+        <Title>{game.name}</Title>
       </GameHeader>
       <Main>
-        <Silder></Silder>
+        <ImageSlider slides={game.short_screenshots} />
         <InfoContainer>
           <Info>
             <Description></Description>
@@ -40,27 +42,48 @@ const GameProfile = () => {
 };
 
 const ProfileContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  /* border: 2px solid white; */
   color: ${({ theme }) => theme.colors.text};
 `;
 
 const GameHeader = styled.div`
-  //
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4rem;
 `;
 
 const StoreLink = styled(Link)`
+  display: flex;
+  gap: 1rem;
+  align-items: center;
   color: ${({ theme }) => theme.colors.text};
+  font-size: 2.5rem;
+  transition: transform 0.15s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+`;
+
+const Title = styled.span`
+  font-size: 5rem;
 `;
 
 const Main = styled.div`
-  //
-`;
-
-const Silder = styled.div`
-  //
+  flex-grow: 1;
+  display: flex;
+  padding: 0 4rem;
+  margin-bottom: 5rem;
+  /* border: 2px solid white; */
 `;
 
 const InfoContainer = styled.div`
-  //
+  flex-grow: 1;
+  border: 2px solid white;
 `;
 
 const Info = styled.div`
@@ -68,11 +91,11 @@ const Info = styled.div`
 `;
 
 const Description = styled.div`
-  //
+  border: 2px solid white;
 `;
 
 const More = styled.div`
-  //
+  border: 2px solid white;
 `;
 
 const CartInfo = styled.div`

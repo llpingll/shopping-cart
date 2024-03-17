@@ -1,6 +1,6 @@
 import Header from "../components/Header";
-import Aside from "../components/Aside";
-import Games from "../components/Games";
+import Aside from "../components/store/Aside";
+import Games from "../components/store/Games";
 import Footer from "../components/Footer";
 import styled from "styled-components";
 import { useEffect, useState } from "react";

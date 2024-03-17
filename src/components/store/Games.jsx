@@ -15,8 +15,7 @@ const GamesContainer = styled.div`
   gap: 3rem;
   grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
   max-width: calc(100% - 22rem);
-  border: solid 2px white;
-  color: white;
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 export default Games;
