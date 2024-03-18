@@ -9,12 +9,13 @@ import { Link } from "react-router-dom";
 import ImageSlider from "../components/gameprofile/ImageSlider";
 
 const GameProfile = () => {
-  const { games } = useContext(GameContext);
+  const { games, useFetch } = useContext(GameContext);
 
   const params = useParams();
 
   const game = games.find((game) => game.id == params.gameId);
-  console.log(game);
+
+  // const { data, error } = useFetch(GAMES_URL, { params: {id: game.id} });
 
   return (
     <ProfileContainer>

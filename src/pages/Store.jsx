@@ -3,36 +3,16 @@ import Aside from "../components/store/Aside";
 import Games from "../components/store/Games";
 import Footer from "../components/Footer";
 import styled from "styled-components";
-import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { GameContext } from "../components/context/GameContext";
 
-const APIKEY = "a08052b0ccda4e9f949c07103f97ca68";
-const URL = "https://api.rawg.io/api/games";
+const GAMES_URL = "https://api.rawg.io/api/games";
 
 const Store = () => {
-  const [error, setError] = useState(null);
-  const { games, setGames } = useContext(GameContext);
+  const { games, setGames, useFetch } = useContext(GameContext);
 
-  useEffect(() => {
-    getGames();
-  }, []);
-
-  const getGames = async () => {
-    try {
-      const response = await fetch(`${URL}?key=${APIKEY}&page_size=20`);
-
-      if (response.status >= 400) {
-        throw new Error("Failed to fetch data");
-      }
-
-      const data = await response.json();
-
-      setGames(data.results);
-    } catch (error) {
-      setError(error);
-    }
-  };
+  const { data, error } = useFetch(GAMES_URL);
+  setGames(data);
 
   return (
     <>
