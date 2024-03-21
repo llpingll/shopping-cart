@@ -3,7 +3,7 @@ import Home from "../../pages/Home";
 import ErrorPage from "../../pages/ErrorPage";
 import Store from "../../pages/Store";
 import GameProfile from "../../pages/GameProfile";
-import { Gameprovider } from "../context/GameContext";
+import { DataProvider } from "../context/GameContext";
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -23,9 +23,9 @@ const Router = () => {
   ]);
 
   return (
-    <Gameprovider>
+    <DataProvider>
       <RouterProvider router={router} />
-    </Gameprovider>
+    </DataProvider>
   );
 };
 

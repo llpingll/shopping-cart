@@ -37,7 +37,7 @@ const ImageSlider = ({ slides }) => {
 };
 
 const SliderContainer = styled.section`
-  width: 70%;
+  min-width: 70%;
   position: relative;
   font-size: 5rem;
 

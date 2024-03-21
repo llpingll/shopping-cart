@@ -11,8 +11,11 @@ const GAMES_URL = "https://api.rawg.io/api/games";
 const Store = () => {
   const { games, setGames, useFetch } = useContext(GameContext);
 
-  const { data, error } = useFetch(GAMES_URL);
-  setGames(data);
+  const { data, error, loading } = useFetch(GAMES_URL);
+
+  if (loading) return; // potentially display loading animation
+
+  setGames(data.results);
 
   return (
     <>
