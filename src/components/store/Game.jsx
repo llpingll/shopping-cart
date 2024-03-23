@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-import { FaPlaystation } from "react-icons/fa";
-import { FaXbox } from "react-icons/fa";
-import { FaWindows } from "react-icons/fa";
+import {
+  FaPlaystation,
+  FaApple,
+  FaXbox,
+  FaWindows,
+  FaLinux,
+} from "react-icons/fa";
 import { BsNintendoSwitch } from "react-icons/bs";
-import { FaLinux } from "react-icons/fa";
-import { FaApple } from "react-icons/fa";
 import { IoLogoAndroid } from "react-icons/io";
 
 const Game = ({ game }) => {

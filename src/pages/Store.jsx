@@ -21,8 +21,8 @@ const Store = () => {
     <>
       <Header></Header>
       <Main>
-        <Aside></Aside>
-        <Games games={games} />
+        <Aside />
+        <Games games={games}></Games>
       </Main>
       <Footer></Footer>
     </>
@@ -31,6 +31,7 @@ const Store = () => {
 
 const Main = styled.div`
   display: flex;
+  gap: 3rem;
   padding: 0 4rem;
   margin-bottom: 5rem;
 `;
