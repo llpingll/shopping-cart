@@ -69,7 +69,9 @@ const Game = ({ game }) => {
 
   return (
     <GameContainer>
-      <Image src={game.background_image} />
+      <Link to={`/store/${game.id}`}>
+        <Image src={game.background_image} />
+      </Link>
       <InfoContainer>
         <ButtonContainer>
           <button>Add to cart +</button>
@@ -96,6 +98,7 @@ const Image = styled.img`
   object-fit: cover;
   height: CALC(100% - 17rem);
   border-radius: 3rem 3rem 0 0;
+  cursor: pointer;
 `;
 
 const InfoContainer = styled.div`

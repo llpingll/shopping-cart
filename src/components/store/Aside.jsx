@@ -129,13 +129,13 @@ const Aside = () => {
         </div>
         <div>
           <div>
-            <GiPistolGun />
+            <GiMountainRoad />
           </div>
           Adventure
         </div>
         <div>
           <div>
-            <GiMountainRoad />
+            <FaPuzzlePiece />
           </div>
           Puzzle
         </div>

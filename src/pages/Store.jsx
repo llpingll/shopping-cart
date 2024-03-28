@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import styled from "styled-components";
 import { useContext } from "react";
 import { GameContext } from "../components/context/GameContext";
+import { getLast30Days } from "../components/utilities/apiQueries";
 
 const GAMES_URL = "https://api.rawg.io/api/games";
 
