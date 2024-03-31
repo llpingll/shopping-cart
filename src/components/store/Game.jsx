@@ -89,6 +89,7 @@ const Game = ({ game }) => {
 };
 
 const GameContainer = styled.div`
+  max-height: 34rem;
   transition: transform 0.15s ease-in-out;
 
   &:hover {
