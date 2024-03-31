@@ -2,31 +2,9 @@ import styled from "styled-components";
 import { gameOptions } from "../utilities/apiCallOptions";
 import { GameContext } from "../context/GameContext";
 import { useContext } from "react";
-// import { getLast30Days } from "../utilities/apiQueries";
 
 const Aside = () => {
   const { setOption } = useContext(GameContext);
-
-  // const getData = async () => {
-  //   const APIKEY = "a08052b0ccda4e9f949c07103f97ca68";
-  //   let apiUrl = `${GAMES_URL}?key=${APIKEY}&dates=${getLast30Days()}`;
-  //   try {
-  //     const response = await fetch(apiUrl);
-
-  //     if (response.status >= 400) {
-  //       throw new Error("Failed to fetch data");
-  //     }
-
-  //     const data = await response.json();
-  //     console.log(apiUrl);
-  //     // console.log(getLast30Days());
-  //     console.log(data);
-  //     // setData(data);
-  //   } catch (error) {
-  //     console.log(error);
-  //     //   setError(error);
-  //   }
-  // };
 
   return (
     <AsideContainer>

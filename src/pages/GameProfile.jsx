@@ -1,21 +1,25 @@
 import { useParams, Link } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { GameContext } from "../components/context/GameContext";
+import { IoMdArrowBack, IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { useFetch } from "../components/utilities/apiQueries";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { IoMdArrowBack, IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import styled from "styled-components";
 import ImageSlider from "../components/gameprofile/ImageSlider";
 
 const GameProfile = () => {
   const [expanded, setExpanded] = useState(false);
-  const { games, useFetch, GAMES_URL } = useContext(GameContext);
+  const { games, GAMES_URL } = useContext(GameContext);
 
   const params = useParams();
   const game = games.find((game) => game.id == params.gameId);
-  const { data, error, loading } = useFetch(`${GAMES_URL}/${game.id}`);
+  const { data, error, loading } = useFetch(
+    `${GAMES_URL}/${game.id}`,
+    "profile"
+  );
 
-  if (loading) return; // potentially display loading animation
+  if (loading || error) return; // potentially display loading animation
 
   const getDetails = (info) => {
     switch (info) {

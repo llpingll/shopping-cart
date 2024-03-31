@@ -5,13 +5,14 @@ import Footer from "../components/Footer";
 import styled from "styled-components";
 import { useContext } from "react";
 import { GameContext } from "../components/context/GameContext";
+import { useFetch } from "../components/utilities/apiQueries";
 
 const Store = () => {
-  const { games, setGames, useFetch, GAMES_URL } = useContext(GameContext);
+  const { games, setGames, GAMES_URL } = useContext(GameContext);
 
-  const { data, error, loading } = useFetch(GAMES_URL);
+  const { data, error, loading } = useFetch(GAMES_URL, "games");
 
-  if (loading) return; // potentially display loading animation
+  if (loading || error) return; // potentially display loading animation
 
   setGames(data.results);
 

@@ -1,14 +1,41 @@
-export const getLast30Days = () => {
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = String(today.getMonth() + 1).padStart(2, "0");
-  const day = String(today.getDate()).padStart(2, "0");
+import { useState, useEffect, useContext } from "react";
+import { GameContext } from "../context/GameContext";
 
-  const thirtyDaysAgo = today;
-  thirtyDaysAgo.setDate(today.getDate() - 30);
-  const year30 = thirtyDaysAgo.getFullYear();
-  const month30 = String(thirtyDaysAgo.getMonth() + 1).padStart(2, "0");
-  const day30 = String(thirtyDaysAgo.getDate()).padStart(2, "0");
+const APIKEY = "a08052b0ccda4e9f949c07103f97ca68";
 
-  return `${year30}-${month30}-${day30},${year}-${month}-${day}`;
+export const useFetch = (URL, query) => {
+  const { option } = useContext(GameContext);
+  const [data, setData] = useState({});
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  let apiUrl;
+
+  if (query === "profile") apiUrl = `${URL}?key=${APIKEY}`;
+  if (query === "games") apiUrl = `${URL}?key=${APIKEY}${option}`;
+
+  const getData = async () => {
+    try {
+      const response = await fetch(apiUrl);
+      // console.log(apiUrl);
+
+      if (response.status >= 400) {
+        throw new Error("Failed to fetch data");
+      }
+
+      const data = await response.json();
+
+      setData(data);
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, [option]);
+
+  return { data, error, loading };
 };
