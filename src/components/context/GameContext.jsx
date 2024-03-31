@@ -1,4 +1,5 @@
 import { useState, useEffect, createContext } from "react";
+const GAMES_URL = "https://api.rawg.io/api/games";
 
 export const GameContext = createContext();
 
@@ -48,6 +49,7 @@ export const DataProvider = ({ children }) => {
     useFetch,
     query,
     setQuery,
+    GAMES_URL,
   };
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;

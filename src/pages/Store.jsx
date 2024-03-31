@@ -5,12 +5,9 @@ import Footer from "../components/Footer";
 import styled from "styled-components";
 import { useContext } from "react";
 import { GameContext } from "../components/context/GameContext";
-import { getLast30Days } from "../components/utilities/apiQueries";
-
-const GAMES_URL = "https://api.rawg.io/api/games";
 
 const Store = () => {
-  const { games, setGames, useFetch } = useContext(GameContext);
+  const { games, setGames, useFetch, GAMES_URL } = useContext(GameContext);
 
   const { data, error, loading } = useFetch(GAMES_URL);
 

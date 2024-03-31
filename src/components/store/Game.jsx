@@ -67,6 +67,8 @@ const Game = ({ game }) => {
     return `$${(Math.random() * (61 - 5) + 5).toFixed(2)}`;
   };
 
+  const price = generatePrice();
+
   return (
     <GameContainer>
       <Link to={`/store/${game.id}`}>
@@ -75,7 +77,7 @@ const Game = ({ game }) => {
       <InfoContainer>
         <ButtonContainer>
           <button>Add to cart +</button>
-          {generatePrice()}
+          {price}
         </ButtonContainer>
         <Icons>{getPlatforms().map((platform) => assignIcons(platform))}</Icons>
         <GameLink to={`/store/${game.id}`}>

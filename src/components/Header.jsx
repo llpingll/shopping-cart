@@ -48,7 +48,6 @@ const Logo = styled.div`
 const Navbar = styled.nav`
   display: flex;
   align-items: center;
-  /* margin-left: auto; */
   font-size: 2.5rem;
   gap: 6rem;
 `;

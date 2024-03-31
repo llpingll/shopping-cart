@@ -8,16 +8,42 @@ import { FaTrophy } from "react-icons/fa6";
 import { IoIosPodium } from "react-icons/io";
 import { FaCrown } from "react-icons/fa";
 import styled from "styled-components";
-import { RiBoxingFill } from "react-icons/ri"; //<RiBoxingFill />
-import { FaChessKnight } from "react-icons/fa"; //<FaChessKnight />
-import { RiSwordFill } from "react-icons/ri"; //<RiSwordFill />
-import { GiPistolGun } from "react-icons/gi"; // <GiPistolGun />
-import { GiMountainRoad } from "react-icons/gi"; // <GiMountainRoad />
-import { FaPuzzlePiece } from "react-icons/fa"; // <FaPuzzlePiece />
-import { FaFlagCheckered } from "react-icons/fa"; //<FaFlagCheckered />
-import { MdSportsFootball } from "react-icons/md"; // <MdSportsFootball />
+import { RiBoxingFill } from "react-icons/ri";
+import { FaChessKnight } from "react-icons/fa";
+import { RiSwordFill } from "react-icons/ri";
+import { GiPistolGun } from "react-icons/gi";
+import { GiMountainRoad } from "react-icons/gi";
+import { FaPuzzlePiece } from "react-icons/fa";
+import { FaFlagCheckered } from "react-icons/fa";
+import { MdSportsFootball } from "react-icons/md";
+// import { GameContext } from "../context/GameContext";
+// import { useContext } from "react";
+// import { getLast30Days } from "../utilities/apiQueries";
 
 const Aside = () => {
+  // const { setGames, GAMES_URL } = useContext(GameContext);
+
+  // const getData = async () => {
+  //   const APIKEY = "a08052b0ccda4e9f949c07103f97ca68";
+  //   let apiUrl = `${GAMES_URL}?key=${APIKEY}&dates=${getLast30Days()}`;
+  //   try {
+  //     const response = await fetch(apiUrl);
+
+  //     if (response.status >= 400) {
+  //       throw new Error("Failed to fetch data");
+  //     }
+
+  //     const data = await response.json();
+  //     console.log(apiUrl);
+  //     // console.log(getLast30Days());
+  //     console.log(data);
+  //     // setData(data);
+  //   } catch (error) {
+  //     console.log(error);
+  //     //   setError(error);
+  //   }
+  // };
+
   return (
     <AsideContainer>
       <div>

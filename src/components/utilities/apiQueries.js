@@ -10,5 +10,5 @@ export const getLast30Days = () => {
   const month30 = String(thirtyDaysAgo.getMonth() + 1).padStart(2, "0");
   const day30 = String(thirtyDaysAgo.getDate()).padStart(2, "0");
 
-  return `${year}-${month}-${day}, ${year30}-${month30}-${day30}`;
+  return `${year30}-${month30}-${day30},${year}-${month}-${day}`;
 };
