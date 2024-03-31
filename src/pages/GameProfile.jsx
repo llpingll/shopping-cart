@@ -7,11 +7,9 @@ import { IoMdArrowBack, IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import styled from "styled-components";
 import ImageSlider from "../components/gameprofile/ImageSlider";
 
-const GAMES_URL = "https://api.rawg.io/api/games";
-
 const GameProfile = () => {
   const [expanded, setExpanded] = useState(false);
-  const { games, useFetch } = useContext(GameContext);
+  const { games, useFetch, GAMES_URL } = useContext(GameContext);
 
   const params = useParams();
   const game = games.find((game) => game.id == params.gameId);
