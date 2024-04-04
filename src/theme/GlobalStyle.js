@@ -14,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 62.5%;
     line-height: 1.6;
     min-height: 100%;
-    /* Footer support */
+    /* Footer & Cart support */
     position: relative;
   }
 

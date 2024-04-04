@@ -6,6 +6,22 @@ export const GameContext = createContext();
 export const DataProvider = ({ children }) => {
   const [games, setGames] = useState([]);
   const [option, setOption] = useState("");
+  const [cart, setCart] = useState([]);
+  const [activeCart, setActiveCart] = useState(false);
+
+  const addToCart = (game) => {
+    setCart([...cart, game]);
+  };
+
+  const removeCartItem = (name) => {
+    setCart(
+      cart.filter((item) => {
+        if (name !== item.name) {
+          return item;
+        }
+      })
+    );
+  };
 
   const value = {
     GAMES_URL,
@@ -13,6 +29,12 @@ export const DataProvider = ({ children }) => {
     setGames,
     option,
     setOption,
+    cart,
+    setCart,
+    activeCart,
+    setActiveCart,
+    addToCart,
+    removeCartItem,
   };
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;

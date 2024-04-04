@@ -1,6 +1,3 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-
 import {
   FaPlaystation,
   FaApple,
@@ -10,8 +7,16 @@ import {
 } from "react-icons/fa";
 import { BsNintendoSwitch } from "react-icons/bs";
 import { IoLogoAndroid } from "react-icons/io";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { useState, useContext } from "react";
+import { GameContext } from "../context/GameContext";
 
 const Game = ({ game }) => {
+  const [addedToCart, setAddedToCart] = useState(false);
+
+  const { addToCart } = useContext(GameContext);
+
   const getPlatforms = () => {
     const platformsToCheck = [
       "PC",
@@ -75,8 +80,15 @@ const Game = ({ game }) => {
         <Image src={game.background_image} />
       </Link>
       <InfoContainer>
-        <ButtonContainer>
-          <button>Add to cart +</button>
+        <ButtonContainer addedToCart={addedToCart}>
+          <button
+            onClick={() => {
+              addToCart(game);
+              setAddedToCart(true);
+            }}
+          >
+            {addedToCart ? "Added 🗸" : "Add to cart +"}
+          </button>
           {price}
         </ButtonContainer>
         <Icons>{getPlatforms().map((platform) => assignIcons(platform))}</Icons>
@@ -120,6 +132,7 @@ const ButtonContainer = styled.div`
   font-size: 2rem;
 
   & button {
+    color: ${({ addedToCart, theme }) => addedToCart && theme.colors.green};
     background-color: inherit;
   }
 `;

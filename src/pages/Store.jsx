@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { useContext } from "react";
 import { GameContext } from "../components/context/GameContext";
 import { useFetch } from "../components/utilities/apiQueries";
+import { Cart } from "../components/cart/Cart";
 
 const Store = () => {
   const { games, setGames, GAMES_URL } = useContext(GameContext);
@@ -24,6 +25,7 @@ const Store = () => {
         <Games games={games}></Games>
       </Main>
       <Footer></Footer>
+      <Cart />
     </>
   );
 };

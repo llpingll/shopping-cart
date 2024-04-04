@@ -2,8 +2,12 @@ import { FaRegChessKnight } from "react-icons/fa6";
 import { RiShoppingCartLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useContext } from "react";
+import { GameContext } from "../components/context/GameContext";
 
 const Header = () => {
+  const { setActiveCart } = useContext(GameContext);
+
   return (
     <HeaderContainer>
       <Link to="/">
@@ -15,7 +19,7 @@ const Header = () => {
       <Navbar>
         <NavbarLink to="/">Home</NavbarLink>
         <NavbarLink to="/store">Store</NavbarLink>
-        <NavbarLink to={"cart"}>
+        <NavbarLink onClick={() => setActiveCart(true)}>
           <RiShoppingCartLine />
         </NavbarLink>
       </Navbar>

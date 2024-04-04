@@ -3,13 +3,15 @@ import Main from "../components/Main";
 import Footer from "../components/Footer";
 import styled from "styled-components";
 import image from "../assets/Skin_Splash_Coven_Camille.webp";
+import { Cart } from "../components/cart/Cart";
 
 const Home = () => {
   return (
     <BackgroundImg>
-      <Header></Header>
-      <Main></Main>
-      <Footer></Footer>
+      <Header />
+      <Main />
+      <Footer />
+      <Cart />
     </BackgroundImg>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
@@ -43,13 +43,11 @@ const SliderContainer = styled.section`
 
   & .active {
     height: 100%;
-    /* border: 2px green solid; */
   }
 
   & img {
     object-fit: cover;
     border-radius: 5rem;
-    /* border: 2px red solid; */
     height: 100%;
   }
 `;

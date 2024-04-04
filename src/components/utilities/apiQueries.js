@@ -14,28 +14,26 @@ export const useFetch = (URL, query) => {
   if (query === "profile") apiUrl = `${URL}?key=${APIKEY}`;
   if (query === "games") apiUrl = `${URL}?key=${APIKEY}${option}`;
 
-  const getData = async () => {
-    try {
-      const response = await fetch(apiUrl);
-      // console.log(apiUrl);
-
-      if (response.status >= 400) {
-        throw new Error("Failed to fetch data");
-      }
-
-      const data = await response.json();
-
-      setData(data);
-    } catch (error) {
-      setError(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const getData = async () => {
+      try {
+        const response = await fetch(apiUrl);
+
+        if (response.status >= 400) {
+          throw new Error("Failed to fetch data");
+        }
+
+        const data = await response.json();
+
+        setData(data);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
     getData();
-  }, [option]);
+  }, [option, apiUrl]);
 
   return { data, error, loading };
 };
