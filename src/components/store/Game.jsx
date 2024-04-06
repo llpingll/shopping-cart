@@ -9,13 +9,12 @@ import { BsNintendoSwitch } from "react-icons/bs";
 import { IoLogoAndroid } from "react-icons/io";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { GameContext } from "../context/GameContext";
 
 const Game = ({ game }) => {
-  const [addedToCart, setAddedToCart] = useState(false);
-
   const { addToCart } = useContext(GameContext);
+  // const [addedToCart, setAddedToCart] = useState(isItemInCart(game));
 
   const getPlatforms = () => {
     const platformsToCheck = [
@@ -68,28 +67,22 @@ const Game = ({ game }) => {
     }
   };
 
-  const generatePrice = () => {
-    return `$${(Math.random() * (61 - 5) + 5).toFixed(2)}`;
-  };
-
-  const price = generatePrice();
-
   return (
     <GameContainer>
       <Link to={`/store/${game.id}`}>
         <Image src={game.background_image} />
       </Link>
       <InfoContainer>
-        <ButtonContainer addedToCart={addedToCart}>
+        <ButtonContainer>
           <button
             onClick={() => {
               addToCart(game);
               setAddedToCart(true);
             }}
           >
-            {addedToCart ? "Added 🗸" : "Add to cart +"}
+            {/* {addedToCart ? "Added 🗸" : "Add to cart +"} */}
           </button>
-          {price}
+          {game.price}
         </ButtonContainer>
         <Icons>{getPlatforms().map((platform) => assignIcons(platform))}</Icons>
         <GameLink to={`/store/${game.id}`}>

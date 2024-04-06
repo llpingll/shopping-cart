@@ -3,6 +3,10 @@ import { GameContext } from "../context/GameContext";
 
 const APIKEY = "a08052b0ccda4e9f949c07103f97ca68";
 
+const generatePrice = () => {
+  return `$${(Math.random() * (60 - 5) + 5).toFixed(2)}`;
+};
+
 export const useFetch = (URL, query) => {
   const { option } = useContext(GameContext);
   const [data, setData] = useState({});
@@ -25,7 +29,16 @@ export const useFetch = (URL, query) => {
 
         const data = await response.json();
 
-        setData(data);
+        // If store query, add price to games
+        if (query === "games") {
+          const updatedData = data.results.map((item) => ({
+            ...item,
+            price: generatePrice(),
+          }));
+          setData(updatedData);
+        } else {
+          setData(data);
+        }
       } catch (error) {
         setError(error);
       } finally {
@@ -33,7 +46,7 @@ export const useFetch = (URL, query) => {
       }
     };
     getData();
-  }, [option, apiUrl]);
+  }, [option, apiUrl, query]);
 
   return { data, error, loading };
 };

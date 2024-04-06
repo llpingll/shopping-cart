@@ -15,7 +15,7 @@ const Store = () => {
 
   if (loading || error) return; // potentially display loading animation
 
-  setGames(data.results);
+  setGames(data);
 
   return (
     <>

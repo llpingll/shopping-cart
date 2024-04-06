@@ -20,13 +20,19 @@ export const Cart = () => {
               cart.map((item) => (
                 <Card key={item.name}>
                   <div>
-                    <div onClick={() => removeCartItem(item.name)}>x</div>
+                    <div
+                      onClick={() => {
+                        removeCartItem(item.name);
+                      }}
+                    >
+                      x
+                    </div>
                   </div>
                   <Gamelink to={`/store/${item.id}`}>
                     <img src={item.background_image} alt={item.name} />
                     <div>
                       <p>{item.name}</p>
-                      <p>$price</p>
+                      <p>{item.price}</p>
                     </div>
                   </Gamelink>
                 </Card>

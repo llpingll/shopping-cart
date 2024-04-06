@@ -23,6 +23,10 @@ export const DataProvider = ({ children }) => {
     );
   };
 
+  // const isItemInCart = (game) => {
+  //   return cart.includes(game);
+  // };
+
   const value = {
     GAMES_URL,
     games,
@@ -35,6 +39,7 @@ export const DataProvider = ({ children }) => {
     setActiveCart,
     addToCart,
     removeCartItem,
+    // isItemInCart,
   };
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;

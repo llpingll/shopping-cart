@@ -7,10 +7,11 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import styled from "styled-components";
 import ImageSlider from "../components/gameprofile/ImageSlider";
+import { Cart } from "../components/cart/Cart";
 
 const GameProfile = () => {
+  const { games, GAMES_URL, addToCart, isItemInCart } = useContext(GameContext);
   const [expanded, setExpanded] = useState(false);
-  const { games, GAMES_URL } = useContext(GameContext);
 
   const params = useParams();
   const game = games.find((game) => game.id == params.gameId);
@@ -18,6 +19,8 @@ const GameProfile = () => {
     `${GAMES_URL}/${game.id}`,
     "profile"
   );
+
+  // const [addedToCart, setAddedToCart] = useState(isItemInCart(game));
 
   if (loading || error) return; // potentially display loading animation
 
@@ -86,12 +89,20 @@ const GameProfile = () => {
             </More>
           </div>
           <CartInfo>
-            <p>$Price</p>
-            <div>Add to cart +</div>
+            <p>{game.price}</p>
+            <div
+              onClick={() => {
+                addToCart(game);
+                // setAddedToCart(true);
+              }}
+            >
+              {/* {addedToCart ? "Added 🗸" : "Add to cart +"} */}
+            </div>
           </CartInfo>
         </InfoContainer>
       </Main>
       <Footer></Footer>
+      <Cart></Cart>
     </ProfileContainer>
   );
 };
