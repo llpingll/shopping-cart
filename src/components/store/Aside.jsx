@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import { gameOptions } from "../utilities/apiCallOptions";
 import { GameContext } from "../context/GameContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 const Aside = () => {
-  const { setOption } = useContext(GameContext);
+  const { setOption, setOptionHeading } = useContext(GameContext);
+  const [activeOption, setActiveOption] = useState("All time best");
 
   return (
     <AsideContainer>
@@ -12,7 +13,15 @@ const Aside = () => {
         <div key={option.cat}>
           <span>{option.cat}</span>
           {option.items.map((item) => (
-            <div key={item.text} onClick={() => setOption(item.query)}>
+            <div
+              className={item.text === activeOption ? "active" : ""}
+              key={item.text}
+              onClick={() => {
+                setOption(item.query);
+                setOptionHeading(item.text);
+                setActiveOption(item.text);
+              }}
+            >
               <div>{item.icon}</div>
               {item.text}
             </div>
@@ -43,6 +52,11 @@ const AsideContainer = styled.div`
     cursor: pointer;
 
     &:hover div {
+      background-color: ${({ theme }) => theme.colors.text};
+      color: ${({ theme }) => theme.colors.gunmetal};
+    }
+
+    &.active div {
       background-color: ${({ theme }) => theme.colors.text};
       color: ${({ theme }) => theme.colors.gunmetal};
     }

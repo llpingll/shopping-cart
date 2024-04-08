@@ -76,6 +76,8 @@ const CartContainer = styled.div`
   margin-left: auto;
   padding: 3.5rem;
   font-size: 2rem;
+  overflow: auto;
+  scrollbar-width: none;
 
   & > p {
     color: grey;
