@@ -10,7 +10,9 @@ export const DataProvider = ({ children }) => {
   const [activeCart, setActiveCart] = useState(false);
 
   const addToCart = (game) => {
-    setCart([...cart, game]);
+    if (!cart.some((item) => item.name === game.name)) {
+      setCart([...cart, game]);
+    }
   };
 
   const removeCartItem = (name) => {
@@ -27,6 +29,18 @@ export const DataProvider = ({ children }) => {
   //   return cart.includes(game);
   // };
 
+  // const updateInCart = (game) => {
+  //   if (cart.includes(game)) {
+  //     setGames(
+  //       games.map((item) => {
+  //         if (item === game) {
+  //           item = { ...game, inCart: !item.inCart };
+  //         }
+  //       })
+  //     );
+  //   }
+  // };
+
   const value = {
     GAMES_URL,
     games,
@@ -39,6 +53,7 @@ export const DataProvider = ({ children }) => {
     setActiveCart,
     addToCart,
     removeCartItem,
+    // updateInCart,
     // isItemInCart,
   };
 

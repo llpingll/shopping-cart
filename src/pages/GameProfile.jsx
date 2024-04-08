@@ -10,7 +10,7 @@ import ImageSlider from "../components/gameprofile/ImageSlider";
 import { Cart } from "../components/cart/Cart";
 
 const GameProfile = () => {
-  const { games, GAMES_URL, addToCart, isItemInCart } = useContext(GameContext);
+  const { games, GAMES_URL, addToCart } = useContext(GameContext);
   const [expanded, setExpanded] = useState(false);
 
   const params = useParams();
@@ -89,14 +89,14 @@ const GameProfile = () => {
             </More>
           </div>
           <CartInfo>
-            <p>{game.price}</p>
+            <p>{`$${game.price}`}</p>
             <div
               onClick={() => {
                 addToCart(game);
                 // setAddedToCart(true);
               }}
             >
-              {/* {addedToCart ? "Added 🗸" : "Add to cart +"} */}
+              Add to cart +
             </div>
           </CartInfo>
         </InfoContainer>
@@ -154,6 +154,10 @@ const InfoContainer = styled.div`
 
   & p {
     font-size: 1.8rem;
+  }
+
+  & div :active {
+    color: grey;
   }
 `;
 

@@ -1,11 +1,26 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { GameContext } from "../context/GameContext";
 
 export const Cart = () => {
   const { activeCart, setActiveCart, cart, setCart, removeCartItem } =
     useContext(GameContext);
+
+  const calculateTotal = () => {
+    let total = 0;
+    cart.forEach((item) => {
+      total += parseFloat(item.price);
+    });
+    return total.toFixed(2); // Format total to two decimal places
+  };
+
+  // Disable scrolling
+  if (activeCart) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "auto";
+  }
 
   return (
     <>
@@ -32,11 +47,12 @@ export const Cart = () => {
                     <img src={item.background_image} alt={item.name} />
                     <div>
                       <p>{item.name}</p>
-                      <p>{item.price}</p>
+                      <p>{`$${item.price}`}</p>
                     </div>
                   </Gamelink>
                 </Card>
               ))}
+            <p>Total: {`$${calculateTotal()}`}</p>
           </CartContainer>
         </CartWrapper>
       )}
@@ -48,7 +64,7 @@ const CartWrapper = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
+  height: 100vh;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
 `;
@@ -60,6 +76,11 @@ const CartContainer = styled.div`
   margin-left: auto;
   padding: 3.5rem;
   font-size: 2rem;
+
+  & > p {
+    color: grey;
+    margin-top: 2.5rem;
+  }
 `;
 
 const Header = styled.div`

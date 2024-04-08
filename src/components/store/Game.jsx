@@ -9,12 +9,11 @@ import { BsNintendoSwitch } from "react-icons/bs";
 import { IoLogoAndroid } from "react-icons/io";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { useState, useContext, useEffect } from "react";
+import { useContext } from "react";
 import { GameContext } from "../context/GameContext";
 
 const Game = ({ game }) => {
   const { addToCart } = useContext(GameContext);
-  // const [addedToCart, setAddedToCart] = useState(isItemInCart(game));
 
   const getPlatforms = () => {
     const platformsToCheck = [
@@ -77,12 +76,11 @@ const Game = ({ game }) => {
           <button
             onClick={() => {
               addToCart(game);
-              setAddedToCart(true);
             }}
           >
-            {/* {addedToCart ? "Added 🗸" : "Add to cart +"} */}
+            Add to cart +
           </button>
-          {game.price}
+          {`$${game.price}`}
         </ButtonContainer>
         <Icons>{getPlatforms().map((platform) => assignIcons(platform))}</Icons>
         <GameLink to={`/store/${game.id}`}>
@@ -127,6 +125,10 @@ const ButtonContainer = styled.div`
   & button {
     color: ${({ addedToCart, theme }) => addedToCart && theme.colors.green};
     background-color: inherit;
+
+    &:active {
+      color: grey;
+    }
   }
 `;
 

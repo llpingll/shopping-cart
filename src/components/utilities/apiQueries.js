@@ -4,7 +4,7 @@ import { GameContext } from "../context/GameContext";
 const APIKEY = "a08052b0ccda4e9f949c07103f97ca68";
 
 const generatePrice = () => {
-  return `$${(Math.random() * (60 - 5) + 5).toFixed(2)}`;
+  return (Math.random() * (60 - 5) + 5).toFixed(2);
 };
 
 export const useFetch = (URL, query) => {
@@ -34,6 +34,7 @@ export const useFetch = (URL, query) => {
           const updatedData = data.results.map((item) => ({
             ...item,
             price: generatePrice(),
+            inCart: false,
           }));
           setData(updatedData);
         } else {
