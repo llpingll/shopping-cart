@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { GameContext } from "../components/context/GameContext";
 
 const Header = () => {
-  const { setActiveCart } = useContext(GameContext);
+  const { setActiveCart, cart } = useContext(GameContext);
 
   return (
     <HeaderContainer>
@@ -20,6 +20,7 @@ const Header = () => {
         <NavbarLink to="/">Home</NavbarLink>
         <NavbarLink to="/store">Store</NavbarLink>
         <NavbarLink onClick={() => setActiveCart(true)}>
+          {cart.length > 0 && <ItemIndicator>{cart.length}</ItemIndicator>}
           <RiShoppingCartLine />
         </NavbarLink>
       </Navbar>
@@ -74,7 +75,22 @@ const NavbarLink = styled(Link)`
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    position: relative;
   }
+`;
+
+const ItemIndicator = styled.div`
+  position: absolute;
+  top: -0.4rem;
+  right: -0.4rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: red;
+  font-size: 1.6rem;
+  text-align: center;
+  align-content: center;
+  font-weight: 700;
 `;
 
 export default Header;

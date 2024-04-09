@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { GameContext } from "../context/GameContext";
 
 export const Cart = () => {

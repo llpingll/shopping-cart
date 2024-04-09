@@ -18,7 +18,7 @@ const Store = () => {
   setGames(data);
 
   return (
-    <>
+    <StoreWrapper>
       <Header></Header>
       <Main>
         <Aside />
@@ -26,9 +26,14 @@ const Store = () => {
       </Main>
       <Footer></Footer>
       <Cart />
-    </>
+    </StoreWrapper>
   );
 };
+
+const StoreWrapper = styled.div`
+  @media (max-width: 735px) {
+  }
+`;
 
 const Main = styled.div`
   display: flex;
