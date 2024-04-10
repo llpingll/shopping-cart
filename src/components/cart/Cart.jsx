@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { GameContext } from "../context/GameContext";
 
 export const Cart = () => {
@@ -12,15 +12,27 @@ export const Cart = () => {
     cart.forEach((item) => {
       total += parseFloat(item.price);
     });
-    return total.toFixed(2); // Format total to two decimal places
+    return total.toFixed(2);
   };
 
   // Disable scrolling
-  if (activeCart) {
-    document.body.style.overflow = "hidden";
-  } else {
-    document.body.style.overflow = "auto";
-  }
+  useEffect(() => {
+    const handleScrollLock = () => {
+      if (activeCart) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "auto";
+      }
+    };
+
+    // Attach event listener on component mount
+    handleScrollLock();
+
+    // Clean up event listener on component unmount
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [activeCart]); // Run effect only when activeCart changes
 
   return (
     <>
@@ -133,6 +145,9 @@ const Gamelink = styled(Link)`
   & img {
     width: 50%;
     border-radius: 2rem;
+    max-height: 130px;
+    object-fit: cover;
+    object-fit: center;
   }
 
   & div p:first-child {

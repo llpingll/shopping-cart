@@ -1,14 +1,43 @@
 import styled from "styled-components";
 import { gameOptions } from "../utilities/apiCallOptions";
 import { GameContext } from "../context/GameContext";
-import { useContext, useState } from "react";
+import { useContext, useEffect } from "react";
 
 const Aside = () => {
-  const { setOption, setOptionHeading } = useContext(GameContext);
-  const [activeOption, setActiveOption] = useState("All time best");
+  const {
+    setOption,
+    activeOption,
+    setActiveOption,
+    activeHamburger,
+    setActiveHamburger,
+  } = useContext(GameContext);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 800 && activeHamburger) {
+        setActiveHamburger(false);
+      }
+    };
+
+    const handleScrollLock = () => {
+      if (activeHamburger) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "auto";
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleScrollLock(); // Set initial scroll lock
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      document.body.style.overflow = "auto";
+    };
+  }, [activeHamburger, setActiveHamburger]);
 
   return (
-    <AsideContainer>
+    <AsideContainer className={activeHamburger ? "active" : ""}>
       {gameOptions.map((option) => (
         <div key={option.cat}>
           <span>{option.cat}</span>
@@ -18,8 +47,8 @@ const Aside = () => {
               key={item.text}
               onClick={() => {
                 setOption(item.query);
-                setOptionHeading(item.text);
                 setActiveOption(item.text);
+                setActiveHamburger(false);
               }}
             >
               <div>{item.icon}</div>
@@ -37,6 +66,28 @@ const AsideContainer = styled.div`
   color: ${({ theme }) => theme.colors.text};
   font-size: 2.5rem;
   font-weight: 700;
+
+  @media (max-width: 800px) {
+    display: none;
+    position: fixed;
+    padding: 3rem;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: ${({ theme }) => theme.colors.dark};
+    gap: 5rem;
+    flex-wrap: wrap;
+    overflow: auto;
+    scrollbar-width: none;
+  }
+
+  &.active {
+    @media (max-width: 800px) {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
 
   & > div {
     margin-bottom: 2rem;

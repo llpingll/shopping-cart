@@ -6,9 +6,10 @@ export const GameContext = createContext();
 export const DataProvider = ({ children }) => {
   const [games, setGames] = useState([]);
   const [option, setOption] = useState("");
-  const [optionHeading, setOptionHeading] = useState("All time best");
+  const [activeOption, setActiveOption] = useState("All time best");
   const [cart, setCart] = useState([]);
   const [activeCart, setActiveCart] = useState(false);
+  const [activeHamburger, setActiveHamburger] = useState(false);
 
   const addToCart = (game) => {
     if (!cart.some((item) => item.name === game.name)) {
@@ -54,8 +55,10 @@ export const DataProvider = ({ children }) => {
     setActiveCart,
     addToCart,
     removeCartItem,
-    optionHeading,
-    setOptionHeading,
+    activeOption,
+    setActiveOption,
+    activeHamburger,
+    setActiveHamburger,
   };
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;

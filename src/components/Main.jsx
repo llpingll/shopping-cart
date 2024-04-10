@@ -24,11 +24,11 @@ const MainContainer = styled.div`
   text-align: center;
   margin: 0 auto;
   margin-bottom: 10rem;
+  padding: 0 4rem;
   color: ${({ theme }) => theme.colors.text};
 `;
 
 const WrapperDiv = styled.div`
-  /* margin-top: -5rem; */
   background-color: rgba(240, 248, 255, 0.1);
   padding: 3rem;
   border-radius: 3rem;

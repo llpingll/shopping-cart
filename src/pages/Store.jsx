@@ -3,13 +3,15 @@ import Aside from "../components/store/Aside";
 import Games from "../components/store/Games";
 import Footer from "../components/Footer";
 import styled from "styled-components";
+import { RxHamburgerMenu } from "react-icons/rx";
 import { useContext } from "react";
 import { GameContext } from "../components/context/GameContext";
 import { useFetch } from "../components/utilities/apiQueries";
 import { Cart } from "../components/cart/Cart";
 
 const Store = () => {
-  const { games, setGames, GAMES_URL } = useContext(GameContext);
+  const { games, setGames, GAMES_URL, activeHamburger, setActiveHamburger } =
+    useContext(GameContext);
 
   const { data, error, loading } = useFetch(GAMES_URL, "games");
 
@@ -18,7 +20,7 @@ const Store = () => {
   setGames(data);
 
   return (
-    <StoreWrapper>
+    <>
       <Header></Header>
       <Main>
         <Aside />
@@ -26,20 +28,46 @@ const Store = () => {
       </Main>
       <Footer></Footer>
       <Cart />
-    </StoreWrapper>
+      <HamburgerIcon onClick={() => setActiveHamburger(!activeHamburger)}>
+        <RxHamburgerMenu />
+      </HamburgerIcon>
+    </>
   );
 };
-
-const StoreWrapper = styled.div`
-  @media (max-width: 735px) {
-  }
-`;
 
 const Main = styled.div`
   display: flex;
   gap: 3rem;
   padding: 0 4rem;
   margin-bottom: 5rem;
+
+  @media (max-width: 800px) {
+    justify-content: center;
+    padding: 0;
+    margin: 0 0 5rem 0;
+  }
+`;
+
+const HamburgerIcon = styled.div`
+  display: none;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: white;
+  font-size: 35px;
+  text-align: center;
+  cursor: pointer;
+
+  @media (max-width: 800px) {
+    display: block;
+  }
+
+  @media (max-width: 500px) {
+    font-size: 35px;
+  }
 `;
 
 export default Store;

@@ -48,6 +48,11 @@ const Logo = styled.div`
   font-size: 6rem;
   color: ${({ theme }) => theme.colors.text};
   font-weight: 600;
+
+  @media (max-width: 435px) {
+    flex-direction: column;
+    text-align: center;
+  }
 `;
 
 const Navbar = styled.nav`

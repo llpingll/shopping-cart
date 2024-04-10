@@ -58,13 +58,13 @@ const GlobalStyle = createGlobalStyle`
     cursor: pointer;
   }
 
-  @media (max-width: 1600px) {
+  @media (max-width: 1200px) {
     html {
       font-size: 55%;
     }
   }
 
-  @media (max-width: 1400px) {
+  @media (max-width: 500px) {
     html {
       font-size: 45%;
     }
