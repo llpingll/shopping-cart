@@ -1,4 +1,5 @@
 import { useState, createContext } from "react";
+import PropTypes from "prop-types";
 const GAMES_URL = "https://api.rawg.io/api/games";
 
 export const GameContext = createContext();
@@ -59,6 +60,10 @@ export const DataProvider = ({ children }) => {
     setActiveOption,
     activeHamburger,
     setActiveHamburger,
+  };
+
+  DataProvider.propTypes = {
+    children: PropTypes.element,
   };
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;

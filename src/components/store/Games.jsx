@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Game from "./Game";
+import PropTypes from "prop-types";
 import { useContext } from "react";
 import { GameContext } from "../context/GameContext";
 
@@ -42,5 +43,9 @@ const GamesContainer = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(32rem, 1fr));
   color: ${({ theme }) => theme.colors.text};
 `;
+
+Games.propTypes = {
+  games: PropTypes.object,
+};
 
 export default Games;

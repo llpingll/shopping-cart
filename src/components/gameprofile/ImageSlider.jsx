@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const ImageSlider = ({ slides }) => {
@@ -64,5 +65,9 @@ const StyledArrowForward = styled(IoIosArrowForward)`
   height: 100%;
   cursor: pointer;
 `;
+
+ImageSlider.propTypes = {
+  slides: PropTypes.array,
+};
 
 export default ImageSlider;

@@ -8,6 +8,7 @@ import {
 import { BsNintendoSwitch } from "react-icons/bs";
 import { IoLogoAndroid } from "react-icons/io";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { GameContext } from "../context/GameContext";
@@ -142,4 +143,9 @@ const Icons = styled.div`
 const GameLink = styled(Link)`
   color: ${({ theme }) => theme.colors.text};
 `;
+
+Game.propTypes = {
+  game: PropTypes.object,
+};
+
 export default Game;
