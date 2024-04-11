@@ -22,8 +22,6 @@ const GlobalStyle = createGlobalStyle`
     font-family: "Noto Sans", sans-serif;
     font-size: 1.6rem;
     background-color: ${({ theme }) => theme.colors.dark};
-    /* Footer support */
-    /* margin-bottom: 5.2rem; */
   }
 
   h1,

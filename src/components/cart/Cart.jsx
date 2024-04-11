@@ -91,6 +91,10 @@ const CartContainer = styled.div`
   overflow: auto;
   scrollbar-width: none;
 
+  @media (max-width: 800px) {
+    max-width: 40rem;
+  }
+
   & > p {
     color: grey;
     margin-top: 2.5rem;
@@ -142,12 +146,29 @@ const Gamelink = styled(Link)`
   align-items: center;
   color: grey;
 
+  @media (max-width: 800px) {
+    margin-top: 1.5rem;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: right;
+  }
+
   & img {
     width: 50%;
     border-radius: 2rem;
     max-height: 130px;
     object-fit: cover;
     object-fit: center;
+
+    @media (max-width: 800px) {
+      width: 100%;
+    }
+  }
+
+  & div {
+    @media (max-width: 800px) {
+      margin-left: auto;
+    }
   }
 
   & div p:first-child {

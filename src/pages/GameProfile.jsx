@@ -4,7 +4,6 @@ import { GameContext } from "../components/context/GameContext";
 import { IoMdArrowBack, IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { useFetch } from "../components/utilities/apiQueries";
 import Header from "../components/Header";
-import Footer from "../components/Footer";
 import styled from "styled-components";
 import ImageSlider from "../components/gameprofile/ImageSlider";
 import { Cart } from "../components/cart/Cart";
@@ -101,7 +100,6 @@ const GameProfile = () => {
           </CartInfo>
         </InfoContainer>
       </Main>
-      <Footer></Footer>
       <Cart></Cart>
     </ProfileContainer>
   );
@@ -119,6 +117,7 @@ const GameHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 4rem;
+  gap: 3rem;
 `;
 
 const StoreLink = styled(Link)`
@@ -136,14 +135,23 @@ const StoreLink = styled(Link)`
 
 const Title = styled.span`
   font-size: 5rem;
+  text-align: right;
+
+  @media (max-width: 500px) {
+    font-size: 4rem;
+  }
 `;
 
 const Main = styled.div`
-  flex-grow: 1;
+  height: 100%;
   display: flex;
   padding: 0 4rem;
   margin-bottom: 5rem;
-  gap: 5rem;
+  gap: 4rem;
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+  }
 `;
 
 const InfoContainer = styled.div`
@@ -151,6 +159,11 @@ const InfoContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   gap: 2rem;
+
+  @media (max-width: 1000px) {
+    flex-direction: column-reverse;
+    margin-bottom: 5rem;
+  }
 
   & p {
     font-size: 1.8rem;
