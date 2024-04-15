@@ -249,7 +249,7 @@ Error generating stack: `+i.message+`
   &:active {
     color: ${({theme:e})=>e.colors.textActive};
   }
-`,t3="/assets/Skin_Splash_Coven_Camille-Dh2EB62g.webp",Is=()=>{const{activeCart:e,setActiveCart:t,cart:n,setCart:r,removeCartItem:o}=R.useContext(Zt),i=()=>{let l=0;return n.forEach(a=>{l+=parseFloat(a.price)}),l.toFixed(2)};return R.useEffect(()=>((()=>{e?document.body.style.overflow="hidden":document.body.style.overflow="auto"})(),()=>{document.body.style.overflow="auto"}),[e]),C.jsx(C.Fragment,{children:e&&C.jsx(n3,{onClick:()=>t(!1),children:C.jsxs(r3,{onClick:l=>l.stopPropagation(),children:[C.jsxs(o3,{children:[C.jsxs("p",{children:[n.length," Games"]})," ",C.jsx("button",{onClick:()=>r([]),children:"Clear"})]}),n&&n.map(l=>C.jsxs(i3,{children:[C.jsx("div",{children:C.jsx("div",{onClick:()=>{o(l.name)},children:"x"})}),C.jsxs(l3,{to:`/store/${l.id}`,children:[C.jsx("img",{src:l.background_image,alt:l.name}),C.jsxs("div",{children:[C.jsx("p",{children:l.name}),C.jsx("p",{children:`$${l.price}`})]})]})]},l.name)),C.jsxs("p",{children:["Total: ",`$${i()}`]})]})})})},n3=H.div`
+`,t3=""+new URL("Skin_Splash_Coven_Camille-Dh2EB62g.webp",import.meta.url).href,Is=()=>{const{activeCart:e,setActiveCart:t,cart:n,setCart:r,removeCartItem:o}=R.useContext(Zt),i=()=>{let l=0;return n.forEach(a=>{l+=parseFloat(a.price)}),l.toFixed(2)};return R.useEffect(()=>((()=>{e?document.body.style.overflow="hidden":document.body.style.overflow="auto"})(),()=>{document.body.style.overflow="auto"}),[e]),C.jsx(C.Fragment,{children:e&&C.jsx(n3,{onClick:()=>t(!1),children:C.jsxs(r3,{onClick:l=>l.stopPropagation(),children:[C.jsxs(o3,{children:[C.jsxs("p",{children:[n.length," Games"]})," ",C.jsx("button",{onClick:()=>r([]),children:"Clear"})]}),n&&n.map(l=>C.jsxs(i3,{children:[C.jsx("div",{children:C.jsx("div",{onClick:()=>{o(l.name)},children:"x"})}),C.jsxs(l3,{to:`/store/${l.id}`,children:[C.jsx("img",{src:l.background_image,alt:l.name}),C.jsxs("div",{children:[C.jsx("p",{children:l.name}),C.jsx("p",{children:`$${l.price}`})]})]})]},l.name)),C.jsxs("p",{children:["Total: ",`$${i()}`]})]})})})},n3=H.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -351,7 +351,7 @@ Error generating stack: `+i.message+`
   background-size: cover;
   background-position: center;
   min-height: 100vh;
-`,s3="/assets/lost-BC_tJYpT.gif",c3=()=>C.jsxs(f3,{children:[C.jsx(d3,{children:"Oh no, this route doesn't exist!"}),C.jsx(p3,{to:"/",children:"You can go back to the home page by clicking here, though!"})]}),f3=H.div`
+`,s3=""+new URL("lost-BC_tJYpT.gif",import.meta.url).href,c3=()=>C.jsxs(f3,{children:[C.jsx(d3,{children:"Oh no, this route doesn't exist!"}),C.jsx(p3,{to:"/",children:"You can go back to the home page by clicking here, though!"})]}),f3=H.div`
   text-align: center;
   background-image: url(${s3});
   background-size: cover;
