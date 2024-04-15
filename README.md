@@ -1,8 +1,11 @@
-# React + Vite
+# Shopping cart
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A games store single page react application built with
 
-Currently, two official plugins are available:
+- [React](https://reactjs.org/)
+- [React Router](https://reactrouter.com/en/main)
+- [react-icons](https://www.npmjs.com/package/react-icons)
+- [styled-components](https://styled-components.com/)
+- [RAWGAPI](https://rawg.io/apidocs)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[Live Demo](https://courageous-entremet-9d4cfd.netlify.app/) :point_left:
