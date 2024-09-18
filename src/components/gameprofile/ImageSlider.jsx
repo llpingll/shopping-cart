@@ -5,7 +5,12 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const ImageSlider = ({ slides }) => {
   const [current, setCurrent] = useState(0);
-  const length = slides.length;
+
+  let length = 0;
+
+  if (slides) {
+    length = slides.length;
+  }
 
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);

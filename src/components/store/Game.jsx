@@ -14,9 +14,9 @@ import { useContext } from "react";
 import { GameContext } from "../context/GameContext";
 
 const Game = ({ game }) => {
-  if (!game) return;
-
   const { addToCart } = useContext(GameContext);
+
+  if (!game) return;
 
   const getPlatforms = () => {
     const platformsToCheck = [
