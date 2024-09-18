@@ -14,6 +14,8 @@ import { useContext } from "react";
 import { GameContext } from "../context/GameContext";
 
 const Game = ({ game }) => {
+  if (!game) return;
+
   const { addToCart } = useContext(GameContext);
 
   const getPlatforms = () => {
@@ -29,14 +31,16 @@ const Game = ({ game }) => {
 
     const matchingPlatforms = [];
 
-    for (let i = 0; i < game.platforms.length; i++) {
-      for (let j = 0; j < platformsToCheck.length; j++) {
-        const platformName = game.platforms[i].platform.name;
-        if (new RegExp(platformsToCheck[j], "i").test(platformName)) {
-          if (matchingPlatforms.includes(platformsToCheck[j])) {
-            continue;
+    if (game.platforms) {
+      for (let i = 0; i < game.platforms.length; i++) {
+        for (let j = 0; j < platformsToCheck.length; j++) {
+          const platformName = game.platforms[i].platform.name;
+          if (new RegExp(platformsToCheck[j], "i").test(platformName)) {
+            if (matchingPlatforms.includes(platformsToCheck[j])) {
+              continue;
+            }
+            matchingPlatforms.push(platformsToCheck[j]);
           }
-          matchingPlatforms.push(platformsToCheck[j]);
         }
       }
     }

@@ -45,7 +45,7 @@ const GamesContainer = styled.div`
 `;
 
 Games.propTypes = {
-  games: PropTypes.object,
+  games: PropTypes.array,
 };
 
 export default Games;

@@ -5,7 +5,7 @@ import lost from "../assets/lost.gif";
 const ErrorPage = () => {
   return (
     <ErrorContainer>
-      <Message>Oh no, this route doesn't exist!</Message>
+      <Message>Oh no, this route doesnt exist!</Message>
 
       <LostLink to="/">
         You can go back to the home page by clicking here, though!
